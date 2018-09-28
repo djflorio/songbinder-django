@@ -1,0 +1,37 @@
+.song-list__list {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.song-list__list-header {
+  border-bottom: solid #111 1px;
+}
+
+.song-list__loader {
+  text-align: center;
+}
+
+.song-list__loader-text {
+  display: block;
+  margin: 20px 0;
+}
+
+.song-list__item:nth-child(even) {
+  background-color: #efefef;
+}
+
+.song-list__view-link {
+  color: #111;
+}
+
+.song-list__button {
+  color: #111;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: 0.3s;
+}
+
+.song-list__button:hover {
+  color: #444444;
+}

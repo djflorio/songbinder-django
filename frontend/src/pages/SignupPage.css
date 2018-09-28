@@ -1,0 +1,23 @@
+.signup {
+  text-align: center;
+}
+.signup__container {
+  display: inline-block;
+  width: 300px;
+  margin: 80px auto;
+}
+
+.signup__nav {
+  text-align: left;
+}
+
+.signup__back {
+  color: #ccc;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.signup__back:hover {
+  color: white;
+}

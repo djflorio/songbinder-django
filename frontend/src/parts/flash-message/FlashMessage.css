@@ -1,0 +1,42 @@
+.flash-message-list {
+  position: fixed;
+  bottom: 10px;
+  left: 30px;
+  right: 30px;
+  z-index: 10;
+}
+
+.flash-message {
+  position: relative;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.flash-message--success {
+  background-color: #a7e4a5;
+  color: #284125;
+  border: solid 1px #284125;
+}
+
+.flash-message--danger {
+  background-color: #db8d8d;
+  color: #5f2626;
+  border: solid 1px #5f2626;
+}
+
+.flash-message__close {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.flash-message__close:hover {
+  color: black;
+}
+
+@media print {
+  .flash-message-list {
+    display: none;
+  }
+}

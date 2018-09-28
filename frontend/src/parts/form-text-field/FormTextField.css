@@ -1,0 +1,45 @@
+.textfield {
+  position: relative;
+  padding: 8px 0;
+  text-align: left;
+}
+
+.textfield__input {
+  display: block;
+  padding: 10px;
+  font-size: 15px;
+  border-style: none;
+  border-bottom: solid #444 2px;
+  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  color: #444;
+  outline: none;
+}
+
+.textfield__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+  box-shadow: 0 0 0 30px white inset;
+  -webkit-text-fill-color: #444 !important;
+}
+
+.textfield__input--error {
+  border-bottom-color: #ec4747;
+  transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.textfield__error {
+  display: inline-block;
+  font-size: 11px;
+  color: #ec4747;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -webkit-transition: 0.3s;
+}

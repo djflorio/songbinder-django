@@ -1,0 +1,71 @@
+.home__hero {
+  height: 500px;
+  background-image: url('../assets/img/headstock.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position: right;
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  position: relative;
+}
+
+.home__hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004f;
+  z-index: 1;
+}
+
+.home__title {
+  font-family: 'Courgette', cursive;
+  color: #efefef;
+  display: block;
+  margin: 0 0 20px 0;
+  font-size: 40px;
+}
+
+.home__version {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+.home__center {
+  display: inline-block;
+  align-self: center;
+  margin: auto;
+  z-index: 2;
+}
+
+.home__button {
+  display: inline-block;
+  border: solid 2px #efefef;
+  padding: 20px 0;
+  width: 200px;
+  color: #efefef;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -webkit-transition: 0.3s;
+}
+
+.home__button:hover {
+  background-color: #80c460;
+}
+
+.home__login-text {
+  color: #efefef;
+  font-size: 12px;
+}
+
+.home__login-link {
+  color: #f2f3cf;
+}

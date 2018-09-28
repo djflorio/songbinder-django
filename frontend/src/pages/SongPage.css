@@ -1,0 +1,11 @@
+.songpage__content {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+@media print {
+  .songpage__content {
+    margin-top: 0;
+    padding: 0;
+  }
+}

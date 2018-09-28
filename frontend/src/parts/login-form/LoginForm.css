@@ -1,0 +1,16 @@
+.login__form {
+  display: block;
+  margin: auto;
+}
+
+.login__submit {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: #80c460;
+  border-style: none;
+  margin: 8px 0;
+  cursor: pointer;
+}

@@ -1,0 +1,104 @@
+.collection-editor {
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+}
+
+.collection-editor__header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+}
+
+.collection-editor__title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+}
+
+.collection-editor__title-edit {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.collection-editor__body {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.collection-editor__col {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  bottom: 0;
+}
+
+.collection-editor__subtitle {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0px;
+}
+
+.collection-editor__subtitle-instructions {
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.collection-editor__subtitle--available {
+  left: 20px;
+}
+
+.collection-editor__subtitle--added {
+  left: 10px;
+}
+
+.collection-editor__col--left {
+  left: 0;
+  right: 50%;
+}
+
+.collection-editor__col--right {
+  right: 0;
+  left: 50%;
+}
+
+.collection-editor__list {
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  top: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fafafa;
+  vertical-align: top;
+  border: solid rgb(188, 201, 207) 1px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+.available-songs {
+  left: 20px;
+  right: 10px;
+}
+
+.collection-songs {
+  left: 10px;
+  right: 20px;
+}
+
+.collection-editor__list-song:nth-child(even) {
+  background-color: #efefef;
+}

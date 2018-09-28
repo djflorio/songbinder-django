@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #fafafa;
+}
+
+.right-content {
+  position: fixed;
+  left: 230px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+}

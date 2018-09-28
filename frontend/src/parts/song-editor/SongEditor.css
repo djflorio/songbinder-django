@@ -1,0 +1,113 @@
+.songeditor__topbar {
+  position: relative;
+}
+
+.songeditor__button {
+  border-style: none;
+  padding: 3px 6px;
+  margin: 5px 3px;
+  border-radius: 3px;
+  background-color: #425B69;
+  color: #fafafa;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.songeditor__button:hover {
+  background-color: #efefef;
+  color: #111;
+}
+
+.songeditor__button--cancel {
+  background-color: #A06267;
+}
+
+.songeditor__button--cancel:hover {
+  background-color: #f66055;
+}
+
+.songeditor__input-pane {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 400px;
+  background-color: #2C414D;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  box-shadow: 2px 0 5px #777;
+  z-index: 2;
+}
+
+.songeditor__input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 30px;
+  margin: 5px 0;
+  border-style: none;
+  border-bottom: solid #fafafa 2px;
+  background-color: transparent;
+  font-size: 16px;
+  outline: none;
+  color: #fafafa;
+}
+
+.songeditor__textarea-container {
+  position: absolute;
+  top: 150px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+.songeditor__textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  padding: 10px;
+  white-space: nowrap;
+  border-style: none;
+  background-color: #efefef;
+  font-size: 13px;
+  color: #111;
+}
+
+.songeditor__select {
+  display: inline-block;
+  background-color: #425B69;
+  border-style: none;
+  color: #fafafa;
+  margin-right: 10px;
+}
+
+.songeditor__keychange {
+  display: inline-block;
+  color: #fafafa;
+  font-size: 12px;
+}
+
+.songeditor__keychange-btn {
+  border-style: none;
+  width: 20px;
+  color: #efefef;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.songeditor__keychange-btn:hover {
+  color: white;
+}
+
+.songeditor__output {
+  position: fixed;
+  top: 0;
+  left: 400px;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background-color: #fcfcfc;
+  overflow: scroll;
+}

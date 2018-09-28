@@ -1,0 +1,50 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: #2C414D;
+}
+
+.topbar__back-arrow {
+  margin-right: 2px;
+}
+
+.topbar__back {
+  position: absolute;
+  top: 4px;
+  text-decoration: none;
+  color: #fafafa;
+}
+
+.topbar__right-controls {
+  position: absolute;
+  display: inline-block;
+  top: 4px;
+  right: 10px;
+}
+
+.topbar__back {
+  left: 10px;
+  transition: 0.3s;
+}
+
+.topbar__control {
+  margin-left: 10px;
+  transition: 0.3s;
+  color: #fafafa;
+  text-decoration: none;
+}
+
+.topbar__back:hover,
+.topbar__control:hover {
+  color: white;
+  text-shadow: 0 0 3px white;
+}
+
+@media print {
+  .topbar {
+    display: none;
+  }
+}

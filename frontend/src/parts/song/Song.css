@@ -1,0 +1,58 @@
+.song {
+  max-width: 8.5in;
+  background-color: #fafafa;
+  margin: auto;
+  padding: 50px;
+  box-sizing: border-box;
+  box-shadow: 1px 1px 3px #888;
+}
+
+.song__title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Kalam', cursive;
+}
+
+.song__artist {
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.song__chunk {
+  display: inline-block;
+  margin-right: 5px;
+  min-width: 5px;
+  white-space: pre;
+}
+
+.song__chord {
+  display: block;
+  height: 18px;
+  color: #C68E93;
+}
+
+.song__lyric {
+  display: block;
+  height: 18px;
+}
+
+.song__loader {
+  text-align: center;
+}
+
+.song__loader-text {
+  display: block;
+  margin-bottom: 20px;
+}
+
+@media print {
+  .song {
+    box-shadow: none;
+  }
+
+  .song {
+    max-width: 100%;
+    padding: 0;
+  }
+}

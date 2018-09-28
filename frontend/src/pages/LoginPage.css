@@ -1,0 +1,23 @@
+.login {
+  text-align: center;
+}
+.login__container {
+  display: inline-block;
+  width: 300px;
+  margin: 80px auto;
+}
+
+.login__nav {
+  text-align: left;
+}
+
+.login__back {
+  color: #888;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login__back:hover {
+  color: #444;
+}
