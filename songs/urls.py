@@ -1,3 +1,7 @@
+"""
+Urls for songs and binders
+"""
+
 from django.urls import path
 from .views import (
     SongListByUser, SongCreateView, SongView,

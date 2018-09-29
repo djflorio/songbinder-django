@@ -1,3 +1,6 @@
+"""
+Permissions for songs and binders
+"""
 from rest_framework import permissions
 
 

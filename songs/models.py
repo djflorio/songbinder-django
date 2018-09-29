@@ -1,9 +1,15 @@
+"""
+Song and Binder models
+"""
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 
 
 class Song(models.Model):
+    """
+    The Song model
+    """
     title = models.CharField(max_length=200, blank=True)
     artist = models.CharField(max_length=200, blank=True)
     content = models.TextField(blank=True)
@@ -26,6 +32,9 @@ class Song(models.Model):
         return self.title
 
 class Binder(models.Model):
+    """
+    A Binder is a collection of songs
+    """
     title = models.CharField(max_length=200, blank=True)
     subtitle = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -46,6 +55,9 @@ class Binder(models.Model):
         return self.title
 
 class BinderPage(models.Model):
+    """
+    A BinderPage maps a song to a binder, allowing a many to many relationship
+    """
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='page')
     binder = models.ForeignKey(Binder, on_delete=models.CASCADE, related_name='page')
     position = models.PositiveIntegerField(default=0)
