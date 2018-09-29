@@ -18,7 +18,7 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     if (this.props.isAuthenticated) {
-      this.props.history.push('/binder');
+      this.props.history.push('/dashboard');
     }
   }
 
