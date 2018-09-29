@@ -1,5 +1,5 @@
 """
-Unit tests for the songs module
+Unit tests for the songs app
 """
 
 import json
