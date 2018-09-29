@@ -38,7 +38,7 @@ class Binder(models.Model):
         ),
         default="PR"
     )
-    songOrder = ArrayField(models.IntegerField(), default=[], blank=True)
+    songOrder = ArrayField(models.IntegerField(), default=list, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
