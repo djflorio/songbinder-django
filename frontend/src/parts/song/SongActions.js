@@ -36,7 +36,7 @@ export const getSong = (sId, history) => {
 
   return dispatch => {
     dispatch(startFetchSong(source));
-    return axios.get('/api/songs/' + sId)
+    return axios.get('/api/songs/' + sId + '/')
       .then(response => {
         dispatch(setSong(response.data));
       })
@@ -59,7 +59,7 @@ export const getSong = (sId, history) => {
 
 export const delSong = (sId) => {
   return dispatch => {
-    return axios.delete('/api/songs/' + sId)
+    return axios.delete('/api/songs/' + sId + '/')
       .then((response) => {
         console.log("deleted");
         dispatch(songDeleted(sId));
