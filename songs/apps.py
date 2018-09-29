@@ -1,6 +1,7 @@
 """
-Configuration for the song app
+Configuration for the songs app
 """
+
 from django.apps import AppConfig
 
 

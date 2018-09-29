@@ -1,10 +1,16 @@
+"""
+Serializers for the user model
+"""
+
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
-from rest_framework import status
-from rest_framework.response import Response
+
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Custom model for the user model
+    """
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
@@ -22,7 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
             validated_data['password']
         )
         return user
-    
+
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
