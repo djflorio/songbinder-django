@@ -1,5 +1,5 @@
 from rest_framework.test import APITestCase
-from .models import Song, Collection, CollectionPage
+from .models import Song, Binder, BinderPage
 from django.contrib.auth.models import User
 from rest_framework import status
 import json
@@ -10,8 +10,8 @@ class SongsTest(APITestCase):
     def setUp(self):
 
         self.songs_url = '/api/songs/'
-        self.collections_url = '/api/collections/'
-        self.collections_action_url = self.collections_url + 'action/'
+        self.binders_url = '/api/binders/'
+        self.binders_action_url = self.binders_url + 'action/'
 
         self.user1 = self.generate_user('testuser', 'test@example.com', 'testpassword')
         self.user2 = self.generate_user('testuser2', 'test2@example.com', 'testpassword')
@@ -21,14 +21,14 @@ class SongsTest(APITestCase):
         self.song3 = self.generate_song(self.user1['user'], "PU")
         self.song4 = self.generate_song(self.user2['user'], "PR")
 
-        self.collection1 = self.generate_collection(self.user1['user'], "PR")
-        self.collection2 = self.generate_collection(self.user2['user'], "PU")
-        self.collection3 = self.generate_collection(self.user1['user'], "PU")
-        self.collection4 = self.generate_collection(self.user2['user'], "PR")
+        self.binder1 = self.generate_binder(self.user1['user'], "PR")
+        self.binder2 = self.generate_binder(self.user2['user'], "PU")
+        self.binder3 = self.generate_binder(self.user1['user'], "PU")
+        self.binder4 = self.generate_binder(self.user2['user'], "PR")
 
         self.numSongs = len(Song.objects.all())
-        self.numCollections = len(Collection.objects.all())
-        self.numCollectionPages = len(CollectionPage.objects.all())
+        self.numBinders = len(Binder.objects.all())
+        self.numBinderPages = len(BinderPage.objects.all())
 
     def generate_user(self, username, email, password):
         return {
@@ -45,10 +45,10 @@ class SongsTest(APITestCase):
             'url': self.songs_url + str(Song.objects.latest('id').id) + '/'
         }
 
-    def generate_collection(self, user, scope):
+    def generate_binder(self, user, scope):
         return {
-            'collection': Collection.objects.create(title="collection", user=user, scope=scope),
-            'url': self.collections_url + str(Collection.objects.latest('id').id) + '/'
+            'binder': Binder.objects.create(title="binder", user=user, scope=scope),
+            'url': self.binders_url + str(Binder.objects.latest('id').id) + '/'
         }
 
     def get_token(self, user):
@@ -152,45 +152,45 @@ class SongsTest(APITestCase):
 
 
     #-------------------------------------------------------------------------#
-    # COLLECTIONS                                                             #
+    # BINDERS                                                                 #
     #-------------------------------------------------------------------------#
 
-    def test_can_create_collection(self):
+    def test_can_create_binder(self):
 
         data = {
-            'title': 'collection'
+            'title': 'binder'
         }
 
-        # Can't create collection if unauthorized
-        resp = self.client.post(self.collections_url, data, format='json')
+        # Can't create binder if unauthorized
+        resp = self.client.post(self.binders_url, data, format='json')
         self.assertEqual(resp.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertEqual(Collection.objects.count(), self.numCollections)
+        self.assertEqual(Binder.objects.count(), self.numBinders)
         
-        # Can create collection if authorized
+        # Can create binder if authorized
         token = self.get_token(self.user1)
-        resp = self.authenticated_request('post', self.collections_url, data, token)
+        resp = self.authenticated_request('post', self.binders_url, data, token)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(Collection.objects.count(), self.numCollections + 1)
-        self.assertEqual(Collection.objects.latest('id').user, self.user1['user'])
+        self.assertEqual(Binder.objects.count(), self.numBinders + 1)
+        self.assertEqual(Binder.objects.latest('id').user, self.user1['user'])
 
-    def test_can_add_song_to_collection(self):
+    def test_can_add_song_to_binder(self):
 
         data = {
             'song': self.song1['song'].id,
-            'collection': self.collection1['collection'].id
+            'binder': self.binder1['binder'].id
         }
 
         data2 = {
             'song': self.song2['song'].id,
-            'collection': self.collection1['collection'].id
+            'binder': self.binder1['binder'].id
         }
 
         data3 = {
             'song': self.song1['song'].id,
-            'collection': self.collection2['collection'].id
+            'binder': self.binder2['binder'].id
         }
 
-        url = self.collections_action_url
+        url = self.binders_action_url
         
         # Can't add song if unauthorized
         resp = self.client.post(url, data, format='json')
@@ -200,48 +200,48 @@ class SongsTest(APITestCase):
         token = self.get_token(self.user1)
         resp = self.authenticated_request('post', url, data, token)
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
-        numSongs = len(self.collection1['collection'].songs.all())
+        numSongs = len(self.binder1['binder'].songs.all())
         self.assertEqual(numSongs, 1)
 
         # Can't add song if already added
         resp = self.authenticated_request('post', url, data, token)
         self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
-        numSongs = len(self.collection1['collection'].songs.all())
+        numSongs = len(self.binder1['binder'].songs.all())
         self.assertEqual(numSongs, 1)
 
         # Can't add song if not own song
         resp = self.authenticated_request('post', url, data2, token)
         self.assertEqual(resp.status_code, status.HTTP_403_FORBIDDEN)
-        numSongs = len(self.collection1['collection'].songs.all())
+        numSongs = len(self.binder1['binder'].songs.all())
         self.assertEqual(numSongs, 1)
 
-        # Can't add song if not own collection
+        # Can't add song if not own binder
         resp = self.authenticated_request('post', url, data3, token)
         self.assertEqual(resp.status_code, status.HTTP_403_FORBIDDEN)
-        numSongs = len(self.collection2['collection'].songs.all())
+        numSongs = len(self.binder2['binder'].songs.all())
         self.assertEqual(numSongs, 0)
 
-    def test_can_remove_song_from_collection(self):
+    def test_can_remove_song_from_binder(self):
 
-        CollectionPage.objects.create(song=self.song1['song'], collection=self.collection1['collection'])
-        CollectionPage.objects.create(song=self.song3['song'], collection=self.collection1['collection'])
-        CollectionPage.objects.create(song=self.song2['song'], collection=self.collection2['collection'])
-        numSongs = len(self.collection1['collection'].songs.all())
+        BinderPage.objects.create(song=self.song1['song'], binder=self.binder1['binder'])
+        BinderPage.objects.create(song=self.song3['song'], binder=self.binder1['binder'])
+        BinderPage.objects.create(song=self.song2['song'], binder=self.binder2['binder'])
+        numSongs = len(self.binder1['binder'].songs.all())
         self.assertEqual(numSongs, 2)
-        numSongs = len(self.collection2['collection'].songs.all())
+        numSongs = len(self.binder2['binder'].songs.all())
         self.assertEqual(numSongs, 1)
 
         data = {
             'song': self.song1['song'].id,
-            'collection': self.collection1['collection'].id
+            'binder': self.binder1['binder'].id
         }
 
         data2 = {
             'song': self.song2['song'].id,
-            'collection': self.collection2['collection'].id
+            'binder': self.binder2['binder'].id
         }
 
-        url = self.collections_action_url
+        url = self.binders_action_url
         
         # Can't remove song if unauthorized
         resp = self.client.delete(url, data, format='json')
@@ -251,11 +251,11 @@ class SongsTest(APITestCase):
         token = self.get_token(self.user1)
         resp = self.authenticated_request('delete', url, data, token)
         self.assertEqual(resp.status_code, status.HTTP_204_NO_CONTENT)
-        numSongs = len(self.collection1['collection'].songs.all())
+        numSongs = len(self.binder1['binder'].songs.all())
         self.assertEqual(numSongs, 1)
 
-        # Can't remove song if not own collection
+        # Can't remove song if not own binder
         resp = self.authenticated_request('delete', url, data2, token)
         self.assertEqual(resp.status_code, status.HTTP_403_FORBIDDEN)
-        numSongs = len(self.collection2['collection'].songs.all())
+        numSongs = len(self.binder2['binder'].songs.all())
         self.assertEqual(numSongs, 1)

@@ -10,11 +10,11 @@ import requireAuth from './parts/auth/requireAuth';
 import Home from './pages/HomePage';
 import Login from './pages/LoginPage';
 import Signup from './pages/SignupPage';
-import Binder from './pages/BinderPage';
+import Dashboard from './pages/DashboardPage';
 import Song from './pages/SongPage';
 import Edit from './pages/EditPage';
-import Collection from './pages/CollectionPage';
-import CollectionEdit from './pages/CollectionEditPage';
+import Binder from './pages/BinderPage';
+import BinderEdit from './pages/BinderEditPage';
 import FlashMessageList from './parts/flash-message/FlashMessageList';
 
 class App extends Component {
@@ -26,11 +26,11 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path='/login' component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/binder" component={requireAuth(Binder)} />
+          <Route path="/dashboard" component={requireAuth(Dashboard)} />
           <Route exact path="/songs/:sId" component={requireAuth(Song)} />
           <Route exact path="/songs/edit/:sId" component={requireAuth(Edit)} />
-          <Route exact path="/collections/edit/:cId" component={requireAuth(CollectionEdit)} />
-          <Route exact path="/collections/:cId" component={requireAuth(Collection)} />
+          <Route exact path="/binders/edit/:cId" component={requireAuth(BinderEdit)} />
+          <Route exact path="/binders/:cId" component={requireAuth(Binder)} />
         </div>
       </Router>
     );

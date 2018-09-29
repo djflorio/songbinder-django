@@ -1,18 +1,18 @@
 import axios from 'axios';
-import { getCollection } from '../collection/CollectionActions';
+import { getBinder } from '../binder/BinderActions';
 import { getSongs } from '../song-list/SongListActions';
 
-export const addSongToCollection = (sId, cId, uId) => {
+export const addSongToBinder = (sId, cId, uId) => {
   
   const data = {
     song: sId,
-    collection: cId
+    binder: cId
   };
 
   return dispatch => {
-    axios.post('/api/collections/action/', data)
+    axios.post('/api/binders/action/', data)
     .then(res => {
-      dispatch(getCollection(cId));
+      dispatch(getBinder(cId));
       dispatch(getSongs(uId));
     })
     .catch(err => {
@@ -22,17 +22,17 @@ export const addSongToCollection = (sId, cId, uId) => {
   
 }
 
-export const remSongFromCollection = (sId, cId, uId) => {
+export const remSongFromBinder = (sId, cId, uId) => {
   
   const data = {
     song: sId,
-    collection: cId
+    binder: cId
   };
 
   return dispatch => {
-    axios.delete('/api/collections/action/', { data: data })
+    axios.delete('/api/binders/action/', { data: data })
     .then(res => {
-      dispatch(getCollection(cId));
+      dispatch(getBinder(cId));
       dispatch(getSongs(uId));
     })
     .catch(err => {

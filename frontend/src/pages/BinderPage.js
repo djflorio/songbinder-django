@@ -1,28 +1,21 @@
 // Third party
 import React from 'react';
-import { Route } from 'react-router-dom';
 
 // Assets
 import './BinderPage.css';
 
 // Components
-import SideBar from '../parts/side-bar/SideBarContainer';
-import BinderSongsPage from './BinderSongsPage';
-import BinderCollectionsPage from './BinderCollectionsPage';
+import TopBar from '../parts/top-bar/TopBar';
+import Binder from '../parts/binder/BinderContainer';
 
 
-class BinderPage extends React.Component {
-  render() {
-    return (
-      <div className="binder-page">
-        <SideBar location={this.props.location} />
-        <div className="binder-page__right">
-          <Route exact path="/binder/songs" component={BinderSongsPage} />
-          <Route exact path="/binder/collections" component={BinderCollectionsPage} />
-        </div>
-      </div>
-    );
-  }
-}
+const BinderPage = (props) => (
+  <div className="binder-page">
+    <TopBar sId={props.match.params.cId} />
+    <div className="songpage__content">
+      <Binder cId={props.match.params.cId} />
+    </div>
+  </div>
+);
 
 export default BinderPage;

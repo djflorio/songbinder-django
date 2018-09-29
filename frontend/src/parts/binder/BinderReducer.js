@@ -1,29 +1,29 @@
-import * as actions from './CollectionActions';
+import * as actions from './BinderActions';
 
 export const defaultState = {
   fetching: false,
   fetchCanceler: null,
-  collection: {}
+  binder: {}
 }
 
-const collection = (state=defaultState, action) => {
+const binder = (state=defaultState, action) => {
   switch(action.type) {
-    case actions.START_FETCH_COLLECTION: {
+    case actions.START_FETCH_BINDER: {
       return {
         ...state,
         fetching: true,
         fetchCanceler: action.fetchCanceler
       }
     }
-    case actions.SUCCEED_FETCH_COLLECTION: {
+    case actions.SUCCEED_FETCH_BINDER: {
       return {
         ...state,
         fetching: false,
-        collection: action.collection
+        binder: action.binder
       }
     }
-    case actions.FAIL_FETCH_COLLECTION:
-    case actions.CANCEL_FETCH_COLLECTION: {
+    case actions.FAIL_FETCH_BINDER:
+    case actions.CANCEL_FETCH_BINDER: {
       return {
         ...state,
         fetching: false
@@ -33,4 +33,4 @@ const collection = (state=defaultState, action) => {
   }
 }
 
-export default collection;
+export default binder;

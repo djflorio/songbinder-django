@@ -13,13 +13,8 @@
       - Brings you to login page
 - Login
     - Reject if email not confirmed, offer to resend
-- Binder
+- Dashboard
     - Show username somewhere
-    - Search songs by title/artist
-    - Tidy up Binder/Song actions
-        - Maybe move them all to Song
-    - Add "collections"
-    - Set up printing
 - Song Editing
     - Add ability to use columns
     - Spinner when saving

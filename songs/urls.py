@@ -1,16 +1,16 @@
 from django.urls import path
 from .views import (
     SongListByUser, SongCreateView, SongView,
-    CollectionListByUser, CollectionCreateView, CollectionView,
-    CollectionActionView
+    BinderListByUser, BinderCreateView, BinderView,
+    BinderActionView
 )
 
 urlpatterns = [
     path('songs/user/<int:uId>/', SongListByUser.as_view()),
     path('songs/<int:pk>/', SongView.as_view()),
     path('songs/', SongCreateView.as_view()),
-    path('collections/user/<int:uId>/', CollectionListByUser.as_view()),
-    path('collections/<int:pk>/', CollectionView.as_view()),
-    path('collections/', CollectionCreateView.as_view()),
-    path('collections/action/', CollectionActionView.as_view()),
+    path('binders/user/<int:uId>/', BinderListByUser.as_view()),
+    path('binders/<int:pk>/', BinderView.as_view()),
+    path('binders/', BinderCreateView.as_view()),
+    path('binders/action/', BinderActionView.as_view()),
 ]

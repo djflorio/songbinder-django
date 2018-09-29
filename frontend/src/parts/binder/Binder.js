@@ -2,9 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Assets
-import './Collection.css';
-
 // Actions
 import { parseSong } from '../song/SongActions';
 
@@ -13,12 +10,12 @@ import { DualRingLoader } from '../loaders/Loaders';
 import Song from '../song/Song';
 
 
-const Collection = (props) => {
+const Binder = (props) => {
 
   if (props.fetching) {
     return (
-      <div className="collection">
-        <span className="collection__loader-text">
+      <div className="binder">
+        <span className="binder__loader-text">
           Loading song...
         </span>
         <DualRingLoader />
@@ -26,10 +23,10 @@ const Collection = (props) => {
     );
   } else {
     return (
-      <div className="collection">
+      <div className="binder">
         {
-          props.collection.songs &&
-          props.collection.songs.map(song => (
+          props.binder.songs &&
+          props.binder.songs.map(song => (
             <Song title={song.title} artist={song.artist} content={parseSong(song.content)} />
           ))
         }
@@ -38,9 +35,9 @@ const Collection = (props) => {
   }
 }
 
-Collection.propTypes = {
-  collection: PropTypes.object.isRequired,
+Binder.propTypes = {
+  binder: PropTypes.object.isRequired,
   fetching: PropTypes.bool.isRequired
 }
 
-export default Collection;
+export default Binder;

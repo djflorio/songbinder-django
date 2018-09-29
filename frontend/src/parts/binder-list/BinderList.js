@@ -5,7 +5,7 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 // Assets
-import './CollectionList.css';
+import './BinderList.css';
 import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
@@ -15,19 +15,19 @@ import { DualRingLoader } from '../loaders/Loaders';
 import IconButton from '../icon-button/IconButton';
 
 
-const CollectionList = (props) => {
+const BinderList = (props) => {
 
-  const { collections, createCollection, deleteCollection, fetching } = props;
+  const { binders, createBinder, deleteBinder, fetching } = props;
 
   return (
-    <div className="collections">
+    <div className="binders">
       <IconButton
-        onClick={createCollection}
+        onClick={createBinder}
         icon={faPlus}
-        text="New Collection"
+        text="New Binder"
       />
-      <table className="collections__list">
-          <thead className="collections__list-header">
+      <table className="binders__list">
+          <thead className="binders__list-header">
             <tr>
               <th>Title</th>
               <th>Actions</th>
@@ -37,23 +37,23 @@ const CollectionList = (props) => {
             
           {
             !fetching &&
-            collections.map(collection => {
+            binders.map(binder => {
               return (
-                <tr key={collection.id} className="collections__item">
+                <tr key={binder.id} className="binders__item">
                   <td>
-                    <Link to={"/collections/" + collection.id} className="collections__view-link">
-                      {collection.title === "" ? "Untitled" : collection.title}
+                    <Link to={"/binders/" + binder.id} className="binders__view-link">
+                      {binder.title === "" ? "Untitled" : binder.title}
                     </Link>
                   </td>
                   <td>
                     <Link
-                      to={"/collections/edit/" + collection.id}
-                      className="collections__button">
+                      to={"/binders/edit/" + binder.id}
+                      className="binders__button">
                       <FontAwesome icon={faEdit} />
                     </Link>
                     <FontAwesome
                       icon={faTimes}
-                      className="collections__button"
+                      className="binders__button"
                     />
                   </td>
                 </tr>
@@ -64,9 +64,9 @@ const CollectionList = (props) => {
         </table>
         {
           fetching &&
-          <div className="collections__loader">
-            <span className="collections__loader-text">
-              Loading collection list...
+          <div className="binders__loader">
+            <span className="binders__loader-text">
+              Loading binder list...
             </span>
             <DualRingLoader />
           </div>
@@ -75,11 +75,11 @@ const CollectionList = (props) => {
   );
 }
 
-CollectionList.propTypes = {
-  collections: PropTypes.array.isRequired,
-  deleteCollection: PropTypes.func.isRequired,
-  createCollection: PropTypes.func.isRequired,
+BinderList.propTypes = {
+  binders: PropTypes.array.isRequired,
+  deleteBinder: PropTypes.func.isRequired,
+  createBinder: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired
 }
 
-export default CollectionList;
+export default BinderList;

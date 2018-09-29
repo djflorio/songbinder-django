@@ -1,4 +1,4 @@
-.collections__add {
+.binders__add {
   padding: 5px 8px;
   border-style: none;
   background-color: #a3d29a;
@@ -8,49 +8,49 @@
   transition: 0.3s;
 }
 
-.collections__add-icon {
+.binders__add-icon {
   margin-right: 3px;
 }
 
-.collections__add:hover {
+.binders__add:hover {
   background-color: #4f8544;
   color: #efefef;
 }
 
-.collections__list {
+.binders__list {
   text-align: left;
   width: 100%;
   border-collapse: collapse;
 }
 
-.collections__list-header {
+.binders__list-header {
   border-bottom: solid #111 1px;
 }
 
-.collections__loader {
+.binders__loader {
   text-align: center;
 }
 
-.collections__loader-text {
+.binders__loader-text {
   display: block;
   margin: 20px 0;
 }
 
-.collections__item:nth-child(even) {
+.binders__item:nth-child(even) {
   background-color: #efefef;
 }
 
-.collections__view-link {
+.binders__view-link {
   color: #111;
 }
 
-.collections__button {
+.binders__button {
   color: #111;
   cursor: pointer;
   margin: 0 2px;
   transition: 0.3s;
 }
 
-.collections__button:hover {
+.binders__button:hover {
   color: #444444;
 }

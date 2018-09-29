@@ -18,14 +18,14 @@ const SideBar = (props) => {
         songbinder<span className="sidebar__version">alpha</span>
       </h1>
       <div className="sidebar__nav">
-        <NavLink to="/binder/songs" className="sidebar__link" activeClassName="sidebar__link--active">
+        <NavLink to="/dashboard/songs" className="sidebar__link" activeClassName="sidebar__link--active">
           Songs
           <span className="sidebar__icon-container">
             <FontAwesome className="sidebar__icon" icon={faMusic} />
           </span>
         </NavLink>
-        <NavLink to="/binder/collections" className="sidebar__link" activeClassName="sidebar__link--active">
-          Collections
+        <NavLink to="/dashboard/binders" className="sidebar__link" activeClassName="sidebar__link--active">
+          Binders
           <span className="sidebar__icon-container">
             <FontAwesome className="sidebar__icon" icon={faBook} />
           </span>

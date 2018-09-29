@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import Song, Collection, CollectionPage
-from .serializers import SongSerializer, CollectionSerializer
+from .models import Song, Binder, BinderPage
+from .serializers import SongSerializer, BinderSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -35,20 +35,20 @@ class SongListByUser(generics.ListAPIView):
         uId = self.kwargs['uId']
         return Song.objects.filter(user=uId)
 
-class CollectionView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Collection.objects.all()
-    serializer_class = CollectionSerializer
+class BinderView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Binder.objects.all()
+    serializer_class = BinderSerializer
     permission_classes = (IsOwnerPublicOrReadOnly,)
 
-class CollectionCreateView(generics.CreateAPIView):
-    queryset = Collection.objects.all()
-    serializer_class = CollectionSerializer
+class BinderCreateView(generics.CreateAPIView):
+    queryset = Binder.objects.all()
+    serializer_class = BinderSerializer
 
     def perform_create(self, serializer):
       serializer.save(user=self.request.user)
 
-class CollectionListByUser(generics.ListAPIView):
-    serializer_class = CollectionSerializer
+class BinderListByUser(generics.ListAPIView):
+    serializer_class = BinderSerializer
 
     def get_queryset(self):
         """
@@ -56,60 +56,60 @@ class CollectionListByUser(generics.ListAPIView):
         the user as determined by the uId portion of the URL.
         """
         uId = self.kwargs['uId']
-        return Collection.objects.filter(user=uId)
+        return Binder.objects.filter(user=uId)
 
-class CollectionActionView(APIView):
-    queryset = Collection.objects.all()
-    serializer_class = CollectionSerializer
+class BinderActionView(APIView):
+    queryset = Binder.objects.all()
+    serializer_class = BinderSerializer
 
     def post(self, request, format=None):
         songId = request.data['song']
-        collectionId = request.data['collection']
+        binderId = request.data['binder']
 
         try:
             song = Song.objects.get(pk=songId)
-            collection = Collection.objects.get(pk=collectionId)
+            binder = Binder.objects.get(pk=binderId)
         except Song.DoesNotExist:
             content = "No song with id " + songId + " found."
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
-        except Collection.DoesNotExist:
-            content = "No collection with id " + collectionId + " found."
+        except Binder.DoesNotExist:
+            content = "No binder with id " + binderId + " found."
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-        if request.user != song.user or request.user != collection.user:
+        if request.user != song.user or request.user != binder.user:
             return Response(status=status.HTTP_403_FORBIDDEN)
 
-        if collection in song.collections.all():
+        if binder in song.binders.all():
             return Response(status=status.HTTP_204_NO_CONTENT)
 
-        CollectionPage.objects.create(song=song, collection=collection)
+        BinderPage.objects.create(song=song, binder=binder)
         
         return Response(status=status.HTTP_201_CREATED)
 
     def delete(self, request, format=None):
         songId = request.data['song']
-        collectionId = request.data['collection']
+        binderId = request.data['binder']
 
         try:
             song = Song.objects.get(pk=songId)
-            collection = Collection.objects.get(pk=collectionId)
+            binder = Binder.objects.get(pk=binderId)
         except Song.DoesNotExist:
             content = "No song with id " + songId + " found."
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
-        except Collection.DoesNotExist:
-            content = "No collection with id " + collectionId + " found."
+        except Binder.DoesNotExist:
+            content = "No binder with id " + binderId + " found."
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
-        if request.user != collection.user:
+        if request.user != binder.user:
             return Response(status=status.HTTP_403_FORBIDDEN)
 
-        if collection not in song.collections.all():
+        if binder not in song.binders.all():
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         try:
-            toDelete = CollectionPage.objects.filter(song=song, collection=collection)
-        except CollectionPage.DoesNotExist:
-            content = "No collection page with collection id " + collectionId + " and song id " + songId + " found."
+            toDelete = BinderPage.objects.filter(song=song, binder=binder)
+        except BinderPage.DoesNotExist:
+            content = "No binder page with binder id " + binderId + " and song id " + songId + " found."
             return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
         toDelete.delete()

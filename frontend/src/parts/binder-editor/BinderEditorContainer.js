@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 // Actions
-import { getCollection, cancelFetchCollection } from '../collection/CollectionActions';
+import { getBinder, cancelFetchBinder } from '../binder/BinderActions';
 import { getSongs, cancelFetchSongs } from '../song-list/SongListActions';
-import { addSongToCollection, remSongFromCollection } from './CollectionEditorActions';
+import { addSongToBinder, remSongFromBinder } from './BinderEditorActions';
 
 // Components
-import CollectionEditor from './CollectionEditor';
+import BinderEditor from './BinderEditor';
 
 
-class CollectionEditorContainer extends React.Component {
+class BinderEditorContainer extends React.Component {
 
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ class CollectionEditorContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getCollection(this.props.cId, this.props.history);
+    this.props.getBinder(this.props.cId, this.props.history);
     this.props.getAllSongs(this.props.user.user_id);
   }
 
@@ -33,30 +33,30 @@ class CollectionEditorContainer extends React.Component {
     }
     if (this.props.fetching && this.props.fetchCanceler) {
       this.props.fetchCanceler.cancel();
-      this.props.cancelFetchCollection();
+      this.props.cancelFetchBinder();
     }
   }
 
   onCancel() {
     if (window.confirm("Are you sure?")) {
-      this.props.history.push("/collections/" + this.props.collection.id);
+      this.props.history.push("/binders/" + this.props.binder.id);
     }
   }
 
   onAddRemove(action, sId, cId) {
     const uId = this.props.user.user_id;
     if (action === "add") {
-      this.props.addSongToCollection(sId, cId, uId);
+      this.props.addSongToBinder(sId, cId, uId);
     } else if (action === "remove") {
-      this.props.remSongFromCollection(sId, cId, uId);
+      this.props.remSongFromBinder(sId, cId, uId);
     }
   }
 
   render() {
     return (
       <div className="editpage">
-        <CollectionEditor
-          collection={this.props.collection}
+        <BinderEditor
+          binder={this.props.binder}
           songs={this.props.songs}
           onAddRemove={this.onAddRemove}
         />
@@ -68,19 +68,19 @@ class CollectionEditorContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     user: state.auth.user,
-    collection: state.collection.collection,
+    binder: state.binder.binder,
     songs: state.songList.songs,
     fetchingSongs: state.songList.fetching,
     fetchCancelerSongs: state.songList.fetchCanceler,
-    fetching: state.collection.fetching,
-    fetchCanceler: state.collection.fetchCanceler
+    fetching: state.binder.fetching,
+    fetchCanceler: state.binder.fetchCanceler
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCollection: (cId, history) => {
-      dispatch(getCollection(cId, history));
+    getBinder: (cId, history) => {
+      dispatch(getBinder(cId, history));
     },
     getAllSongs: (uId) => {
       dispatch(getSongs(uId));
@@ -88,14 +88,14 @@ function mapDispatchToProps(dispatch) {
     cancelFetchSongs: () => {
       dispatch(cancelFetchSongs());
     },
-    cancelFetchCollection: () => {
-      dispatch(cancelFetchCollection());
+    cancelFetchBinder: () => {
+      dispatch(cancelFetchBinder());
     },
-    addSongToCollection: (sId, cId, uId) => {
-      dispatch(addSongToCollection(sId, cId, uId));
+    addSongToBinder: (sId, cId, uId) => {
+      dispatch(addSongToBinder(sId, cId, uId));
     },
-    remSongFromCollection: (sId, cId, uId) => {
-      dispatch(remSongFromCollection(sId, cId, uId));
+    remSongFromBinder: (sId, cId, uId) => {
+      dispatch(remSongFromBinder(sId, cId, uId));
     }
   }
 }
@@ -103,4 +103,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(CollectionEditorContainer));
+)(withRouter(BinderEditorContainer));

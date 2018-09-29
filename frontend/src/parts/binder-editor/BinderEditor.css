@@ -1,4 +1,4 @@
-.collection-editor {
+.binder-editor {
   position: fixed;
   top: 30px;
   left: 0;
@@ -7,7 +7,7 @@
   padding: 20px;
 }
 
-.collection-editor__header {
+.binder-editor__header {
   position: absolute;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   height: 70px;
 }
 
-.collection-editor__title {
+.binder-editor__title {
   position: absolute;
   top: 20px;
   left: 20px;
@@ -24,12 +24,12 @@
   font-size: 25px;
 }
 
-.collection-editor__title-edit {
+.binder-editor__title-edit {
   font-size: 12px;
   margin-left: 5px;
 }
 
-.collection-editor__body {
+.binder-editor__body {
   position: absolute;
   top: 70px;
   left: 0;
@@ -37,44 +37,44 @@
   bottom: 0;
 }
 
-.collection-editor__col {
+.binder-editor__col {
   position: absolute;
   display: inline-block;
   top: 0;
   bottom: 0;
 }
 
-.collection-editor__subtitle {
+.binder-editor__subtitle {
   position: absolute;
   padding: 0;
   margin: 0;
   top: 0px;
 }
 
-.collection-editor__subtitle-instructions {
+.binder-editor__subtitle-instructions {
   font-size: 12px;
   margin-left: 5px;
 }
 
-.collection-editor__subtitle--available {
+.binder-editor__subtitle--available {
   left: 20px;
 }
 
-.collection-editor__subtitle--added {
+.binder-editor__subtitle--added {
   left: 10px;
 }
 
-.collection-editor__col--left {
+.binder-editor__col--left {
   left: 0;
   right: 50%;
 }
 
-.collection-editor__col--right {
+.binder-editor__col--right {
   right: 0;
   left: 50%;
 }
 
-.collection-editor__list {
+.binder-editor__list {
   display: inline-block;
   position: absolute;
   bottom: 20px;
@@ -94,11 +94,11 @@
   right: 10px;
 }
 
-.collection-songs {
+.binder-songs {
   left: 10px;
   right: 20px;
 }
 
-.collection-editor__list-song:nth-child(even) {
+.binder-editor__list-song:nth-child(even) {
   background-color: #efefef;
 }

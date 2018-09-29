@@ -9,7 +9,7 @@ class Song(models.Model):
     content = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     formatVersion = models.IntegerField(default=1)
-    collections = models.ManyToManyField('Collection', through='CollectionPage', related_name='songs', blank=True)
+    binders = models.ManyToManyField('Binder', through='BinderPage', related_name='songs', blank=True)
     scope = models.CharField(
         max_length=2,
         choices=(
@@ -25,7 +25,7 @@ class Song(models.Model):
     def __str__(self):
         return self.title
 
-class Collection(models.Model):
+class Binder(models.Model):
     title = models.CharField(max_length=200, blank=True)
     subtitle = models.TextField(blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
@@ -45,7 +45,7 @@ class Collection(models.Model):
     def __str__(self):
         return self.title
 
-class CollectionPage(models.Model):
+class BinderPage(models.Model):
     song = models.ForeignKey(Song, on_delete=models.CASCADE, related_name='page')
-    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name='page')
+    binder = models.ForeignKey(Binder, on_delete=models.CASCADE, related_name='page')
     position = models.PositiveIntegerField(default=0)

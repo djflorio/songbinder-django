@@ -2,17 +2,17 @@
 import React from 'react';
 
 // Components
-import CollectionEditor from '../parts/collection-editor/CollectionEditorContainer';
+import BinderEditor from '../parts/binder-editor/BinderEditorContainer';
 import TopBar from '../parts/top-bar/TopBar';
 
 
-const CollectionEditPage = (props) => (
+const BinderEditPage = (props) => (
   <div>
     <TopBar />
-    <CollectionEditor
+    <BinderEditor
       cId={props.match.params.cId}
     />
   </div>
 );
 
-export default CollectionEditPage;
+export default BinderEditPage;

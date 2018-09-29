@@ -5,10 +5,10 @@ import React from 'react';
 import SongList from '../parts/song-list/SongListContainer';
 
 
-const BinderSongsPage = () => (
+const DashboardSongsPage = () => (
   <div>
     <SongList />
   </div>
 );
 
-export default BinderSongsPage;
+export default DashboardSongsPage;

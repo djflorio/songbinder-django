@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 // Actions
-import { getCollection, cancelFetchCollection } from './CollectionActions';
+import { getBinder, cancelFetchBinder } from './BinderActions';
 
 // Components
-import Collection from './Collection';
+import Binder from './Binder';
 
 
-class CollectionContainer extends React.Component {
+class BinderContainer extends React.Component {
 
   componentWillMount() {
-    this.props.getCollection(this.props.cId, this.props.history);
+    this.props.getBinder(this.props.cId, this.props.history);
   }
 
   componentWillUnmount() {
@@ -25,8 +25,8 @@ class CollectionContainer extends React.Component {
 
   render() {
     return (
-      <Collection
-        collection={this.props.collection}
+      <Binder
+        binder={this.props.binder}
         fetching={this.props.fetching}
       />
     );
@@ -35,19 +35,19 @@ class CollectionContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    collection: state.collection.collection,
-    fetching: state.collection.fetching,
-    fetchCanceler: state.collection.fetchCanceler
+    binder: state.binder.binder,
+    fetching: state.binder.fetching,
+    fetchCanceler: state.binder.fetchCanceler
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCollection: (cId, history) => {
-      dispatch(getCollection(cId, history));
+    getBinder: (cId, history) => {
+      dispatch(getBinder(cId, history));
     },
-    cancelFetchCollection: () => {
-      dispatch(cancelFetchCollection());
+    cancelFetchBinder: () => {
+      dispatch(cancelFetchBinder());
     }
   }
 }
@@ -55,4 +55,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(CollectionContainer));
+)(withRouter(BinderContainer));
