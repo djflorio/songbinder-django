@@ -12,6 +12,23 @@ import faMusic from '@fortawesome/fontawesome-free-solid/faMusic';
 import faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 
 
+const SideBarLink = (props) => {
+
+  const { path, text, icon } = props;
+
+  return (
+    <NavLink
+      exact to={path}
+      className="sidebar__link"
+      activeClassName="sidebar__link--active">
+      {text}
+      <span className="sidebar__icon-container">
+        <FontAwesome className="sidebar__icon" icon={icon} />
+      </span>
+    </NavLink>
+  );
+}
+
 const SideBar = (props) => {
   return (
     <div className="sidebar">
@@ -19,24 +36,9 @@ const SideBar = (props) => {
         songbinder<span className="sidebar__version">alpha</span>
       </h1>
       <div className="sidebar__nav">
-        <NavLink exact to="/dashboard" className="sidebar__link" activeClassName="sidebar__link--active">
-          Dashboard
-          <span className="sidebar__icon-container">
-            <FontAwesome className="sidebar__icon" icon={faObjectGroup} />
-          </span>
-        </NavLink>
-        <NavLink to="/dashboard/songs" className="sidebar__link" activeClassName="sidebar__link--active">
-          Songs
-          <span className="sidebar__icon-container">
-            <FontAwesome className="sidebar__icon" icon={faMusic} />
-          </span>
-        </NavLink>
-        <NavLink to="/dashboard/binders" className="sidebar__link" activeClassName="sidebar__link--active">
-          Binders
-          <span className="sidebar__icon-container">
-            <FontAwesome className="sidebar__icon" icon={faBook} />
-          </span>
-        </NavLink>
+        <SideBarLink path="/dashboard" text="Dashboard" icon={faObjectGroup} />
+        <SideBarLink path="/dashboard/songs" text="Songs" icon={faMusic} />
+        <SideBarLink path="/dashboard/binders" text="Binders" icon={faBook} />
         <a onClick={props.logoutClick} className="sidebar__link">
           Logout
           <span className="sidebar__icon-container">
