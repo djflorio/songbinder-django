@@ -10,7 +10,7 @@ import requireAuth from './parts/auth/requireAuth';
 import Home from './pages/HomePage';
 import Login from './pages/LoginPage';
 import Signup from './pages/SignupPage';
-import Dashboard from './pages/DashboardPage';
+import Dashboard from './pages/dashboard/DashboardPage';
 import Song from './pages/SongPage';
 import Edit from './pages/EditPage';
 import Binder from './pages/BinderPage';
