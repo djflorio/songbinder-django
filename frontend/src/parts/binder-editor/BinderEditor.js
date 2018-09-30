@@ -5,7 +5,7 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './BinderEditor.css';
-import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
+
 
 const AvailableSongs = (props) => (
   <ul className="binder-editor__list available-songs">
@@ -22,7 +22,7 @@ const AvailableSongs = (props) => (
         {song.artist === "" ? "Unknown Artist" : song.artist}
         <span className="available-songs__add">
           <FontAwesome
-            icon={faPlus}
+            icon={['fas', 'plus']}
             className="available-songs__add-icon"
           />
           Add

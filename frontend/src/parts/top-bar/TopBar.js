@@ -6,8 +6,6 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './TopBar.css';
-import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft';
-import faPrint from '@fortawesome/fontawesome-free-solid/faPrint';
 
 
 const TopBar = ({sId}) => {
@@ -15,7 +13,10 @@ const TopBar = ({sId}) => {
     <div className="topbar">
 
       <Link className="topbar__back" to="/binder">
-        <FontAwesome className="topbar__back-arrow" icon={faAngleDoubleLeft} />
+        <FontAwesome
+          className="topbar__back-arrow"
+          icon={['fas', 'angle-double-left']}
+        />
         back to binder
       </Link>
     
@@ -28,7 +29,7 @@ const TopBar = ({sId}) => {
           <a
             className="topbar__control"
             href="javascript:window.print()">
-            <FontAwesome icon={faPrint} /> print
+            <FontAwesome icon={['fas', 'print']} /> print
           </a>
         </div>
       }

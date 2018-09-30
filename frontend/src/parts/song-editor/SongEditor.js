@@ -4,8 +4,6 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './SongEditor.css';
-import faBan from '@fortawesome/fontawesome-free-solid/faBan';
-import faSave from '@fortawesome/fontawesome-free-solid/faSave';
 
 // Components
 import Song from '../song/Song';
@@ -48,17 +46,17 @@ const InputPane = (props) => {
       <button
         className="songeditor__button songeditor__button--cancel"
         onClick={onCancel}>
-        <FontAwesome icon={faBan} /> Cancel
+        <FontAwesome icon={['fas', 'ban']} /> Cancel
       </button>
       <button
         className="songeditor__button"
         onClick={() => onSave(song, false)}>
-        <FontAwesome icon={faSave} /> Save
+        <FontAwesome icon={['fas', 'save']} /> Save
       </button>
       <button
         className="songeditor__button"
         onClick={() => onSave(song, true, history)}>
-        <FontAwesome icon={faSave} /> Save &amp; Quit
+        <FontAwesome icon={['fas', 'save']} /> Save &amp; Quit
       </button>
     </div>
     <select

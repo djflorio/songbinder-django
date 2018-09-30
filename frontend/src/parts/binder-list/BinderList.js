@@ -6,9 +6,6 @@ import { Link } from 'react-router-dom';
 
 // Assets
 import './BinderList.css';
-import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
-import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
-import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 
 // Components
 import { DualRingLoader } from '../loaders/Loaders';
@@ -23,7 +20,7 @@ const BinderList = (props) => {
     <div className="binders">
       <IconButton
         onClick={createBinder}
-        icon={faPlus}
+        icon={['fas', 'plus']}
         text="New Binder"
       />
       <table className="binders__list">
@@ -49,10 +46,10 @@ const BinderList = (props) => {
                     <Link
                       to={"/binders/edit/" + binder.id}
                       className="binders__button">
-                      <FontAwesome icon={faEdit} />
+                      <FontAwesome icon={['fas', 'edit']} />
                     </Link>
                     <FontAwesome
-                      icon={faTimes}
+                      icon={['fas', 'times']}
                       className="binders__button"
                     />
                   </td>

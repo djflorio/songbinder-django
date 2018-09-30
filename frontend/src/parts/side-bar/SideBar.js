@@ -6,10 +6,6 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './SideBar.css';
-import faObjectGroup from '@fortawesome/fontawesome-free-solid/faObjectGroup';
-import faBook from '@fortawesome/fontawesome-free-solid/faBook';
-import faMusic from '@fortawesome/fontawesome-free-solid/faMusic';
-import faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
 
 
 const SideBarLink = (props) => {
@@ -36,13 +32,28 @@ const SideBar = (props) => {
         songbinder<span className="sidebar__version">alpha</span>
       </h1>
       <div className="sidebar__nav">
-        <SideBarLink path="/dashboard" text="Dashboard" icon={faObjectGroup} />
-        <SideBarLink path="/dashboard/songs" text="Songs" icon={faMusic} />
-        <SideBarLink path="/dashboard/binders" text="Binders" icon={faBook} />
+        <SideBarLink
+          path="/dashboard"
+          text="Dashboard"
+          icon={['fas', 'object-group']}
+        />
+        <SideBarLink
+          path="/dashboard/songs"
+          text="Songs"
+          icon={['fas', 'music']}
+        />
+        <SideBarLink
+          path="/dashboard/binders"
+          text="Binders"
+          icon={['fas', 'book']}
+        />
         <a onClick={props.logoutClick} className="sidebar__link">
           Logout
           <span className="sidebar__icon-container">
-            <FontAwesome className="sidebar__icon" icon={faSignOutAlt} />
+            <FontAwesome
+              className="sidebar__icon"
+              icon={['fas', 'sign-out-alt']}
+            />
           </span>
         </a>
       </div>

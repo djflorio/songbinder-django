@@ -6,7 +6,6 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './FlashMessage.css';
-import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 
 
 class FlashMessage extends React.Component {
@@ -32,7 +31,7 @@ class FlashMessage extends React.Component {
         )}
         onClick={this.onClick}>
         <FontAwesome
-          icon={faTimes}
+          icon={['fas', 'times']}
           className="flash-message__close"
           onClick={this.onClick}
         />

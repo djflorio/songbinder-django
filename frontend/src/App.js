@@ -1,9 +1,11 @@
 // Third party
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core'
 
 // Assets
 import './App.css';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 // Components
 import requireAuth from './parts/auth/requireAuth';
@@ -16,6 +18,8 @@ import Edit from './pages/EditPage';
 import Binder from './pages/BinderPage';
 import BinderEdit from './pages/BinderEditPage';
 import FlashMessageList from './parts/flash-message/FlashMessageList';
+
+library.add(fas)
 
 class App extends Component {
   render() {

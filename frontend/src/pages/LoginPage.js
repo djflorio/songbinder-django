@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
-import faAngleDoubleLeft from '@fortawesome/fontawesome-free-solid/faAngleDoubleLeft';
 import './LoginPage.css';
 
 // Components
@@ -16,7 +15,7 @@ const LoginPage = () => (
     <div className="login__container">
       <div className="login__nav">
         <Link className="login__back" to="/">
-          <FontAwesome icon={faAngleDoubleLeft} />&nbsp;
+          <FontAwesome icon={['fas', 'angle-double-left']} />&nbsp;
           Back
         </Link>
       </div>

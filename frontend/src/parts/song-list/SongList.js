@@ -6,9 +6,6 @@ import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
 import './SongList.css';
-import faPlus from '@fortawesome/fontawesome-free-solid/faPlus';
-import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
-import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
 
 // Components
 import { DualRingLoader } from '../loaders/Loaders';
@@ -23,7 +20,7 @@ const SongList = (props) => {
     <div className="song-list">
       <IconButton
         onClick={createSong}
-        icon={faPlus}
+        icon={['fas', 'plus']}
         text="New Song"
       />
       <table className="song-list__list">
@@ -53,10 +50,10 @@ const SongList = (props) => {
                   <Link
                     to={"/songs/edit/" + song.id}
                     className="song-list__button">
-                    <FontAwesome icon={faEdit} />
+                    <FontAwesome icon={['fas', 'edit']} />
                   </Link>
                   <FontAwesome
-                    icon={faTimes}
+                    icon={['fas', 'times']}
                     className="song-list__button"
                     onClick={() => deleteSong(song.id, song.title)}
                   />
