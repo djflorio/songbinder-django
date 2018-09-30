@@ -47,10 +47,10 @@ export const getSong = (sId, history) => {
           dispatch(failFetchSong());
           if (error.response.status === 403) {
             // TODO: Add flash message
-            history.push("/binder/songs");
+            history.push("/dashboard/songs");
           } else if (error.response.status === 404) {
             // TODO Add flash message
-            history.push("/binder/songs");
+            history.push("/dashboard/songs");
           }
         }
       });

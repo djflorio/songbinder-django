@@ -126,7 +126,7 @@ export const loginRequest = (formData, history) => {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwt.decode(token)));
-      history.push("/binder/songs");
+      history.push("/dashboard");
     })
     .catch(err => {
       dispatch(failLogin());
