@@ -2,17 +2,39 @@
 import React from 'react';
 import FontAwesome from '@fortawesome/react-fontawesome';
 
+// Assets
+import './HomePanel.css';
+
+
+const Panel = (props) => {
+  const { num, text, icon } = props;
+  return (
+    <div className="panel">
+      <div className="panel__inner">
+        <FontAwesome
+          className="panel__icon"
+          icon={icon}
+        />
+        <div className="panel__text">
+          {num} {text}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const HomePanel = () => (
   <div className="dashboard-home">
-    <div className="dashboard-home__panel">
-      <FontAwesome icon={['fas', 'music']} />
-      12 Songs
-    </div>
-    <div className="dashboard-home__panel">
-      <FontAwesome icon={['fas', 'book']} />
-      3 Binders
-    </div>
+    <Panel
+      num={12}
+      text="Songs"
+      icon={['fas', 'music']}
+    />
+    <Panel
+      num={3}
+      text="Binders"
+      icon={['fas', 'book']}
+    />
   </div>
 );
 
