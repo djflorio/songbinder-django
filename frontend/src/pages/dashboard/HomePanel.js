@@ -1,5 +1,6 @@
 // Third party
 import React from 'react';
+import { connect } from 'react-redux';
 import FontAwesome from '@fortawesome/react-fontawesome';
 
 // Assets
@@ -38,4 +39,12 @@ const HomePanel = () => (
   </div>
 );
 
-export default HomePanel;
+class HomePanelContainer extends React.Component {
+  render() {
+    return (
+      <HomePanel />
+    );
+  }
+}
+
+export default HomePanelContainer;
