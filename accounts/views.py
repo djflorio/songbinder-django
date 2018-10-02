@@ -4,8 +4,10 @@ Views for the user model
 
 from rest_framework import viewsets
 from django.contrib.auth.models import User
-from .serializers import UserSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from .serializers import UserSerializer, UserTokenSerializer
 from .permissions import IsUserAdminOrReadOnly
+
 
 class UserView(viewsets.ModelViewSet):
     """
@@ -14,3 +16,9 @@ class UserView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsUserAdminOrReadOnly,)
+
+class UserTokenView(TokenObtainPairView):
+    """
+    View for user tokens using custome token serializer
+    """
+    serializer_class = UserTokenSerializer

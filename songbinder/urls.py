@@ -17,11 +17,10 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView, TokenRefreshView, TokenVerifyView
+    TokenRefreshView, TokenVerifyView
 )
 from rest_framework import routers
-from accounts.views import UserView
-from songs.views import SongView
+from accounts.views import UserView, UserTokenView
 
 router = routers.DefaultRouter()
 router.register('accounts', UserView)
@@ -32,7 +31,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include('songs.urls')),
-    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/token/', UserTokenView.as_view()),
     path('api/token/refresh', TokenRefreshView.as_view()),
     path('api/token/verify', TokenVerifyView.as_view()),
     re_path('.*', TemplateView.as_view(template_name='index.html')),

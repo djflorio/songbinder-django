@@ -5,6 +5,7 @@ Serializers for the user model
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -32,3 +33,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'password')
+
+class UserTokenSerializer(TokenObtainPairSerializer):
+    """
+    Determine what is returned in the JWT
+    """
+    @classmethod
+    def get_token(cls, user):
+        token = super(UserTokenSerializer, cls).get_token(user)
+
+        # Add custom claims
+        token['is_staff'] = user.is_staff
+        token['username'] = user.username
+
+        return token
