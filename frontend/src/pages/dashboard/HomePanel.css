@@ -1,21 +1,51 @@
-.dashboard-home {
-  
+.home-panel__user {
+  border-bottom: solid 2px black;
 }
 
-.panel {
+.home-panel__panels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.home-panel__block {
+  position: relative;
   display: inline-block;
-  width: 50%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.panel__inner {
-  background-color: #f5f5f5;
+  margin-right: 10px;
   padding: 50px;
   text-align: center;
+  color: #CDC293;
+  box-shadow: 0 0 5px #777;
+  background-size: cover;
+  background-position: center;
 }
 
-.panel__icon {
+.home-panel__block-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2C414D;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.home-panel__block--songs {
+  background-image: url('./img/guitarhand.jpeg');
+}
+
+.home-panel__block--binders {
+  background-image: url('./img/binder.jpeg')
+}
+
+.home-panel__block-icon {
+  position: relative;
   font-size: 40px;
   margin-bottom: 10px;
+  z-index: 2;
+}
+
+.home-panel__block-text {
+  position: relative;
+  z-index: 2;
 }
