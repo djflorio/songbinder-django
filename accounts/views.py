@@ -19,6 +19,6 @@ class UserView(viewsets.ModelViewSet):
 
 class UserTokenView(TokenObtainPairView):
     """
-    View for user tokens using custome token serializer
+    View for user tokens using custom token serializer
     """
     serializer_class = UserTokenSerializer
