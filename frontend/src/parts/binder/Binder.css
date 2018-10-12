@@ -1,0 +1,8 @@
+.binder__loader {
+  text-align: center;
+}
+
+.binder__loader-text {
+  display: block;
+  margin: 20px auto 10px auto;
+}
