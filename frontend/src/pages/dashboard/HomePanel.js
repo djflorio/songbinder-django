@@ -7,18 +7,6 @@ import { Link } from "react-router-dom";
 // Assets
 import "./HomePanel.css";
 
-const Panel = props => {
-  const { num, text, icon } = props;
-  return (
-    <div className="panel">
-      <FontAwesome className="panel__icon" icon={icon} />
-      <div className="panel__text">
-        {num} {text}
-      </div>
-    </div>
-  );
-};
-
 const HomePanel = props => (
   <div className="home-panel">
     <h1 className="home-panel__user">{props.user.username}</h1>

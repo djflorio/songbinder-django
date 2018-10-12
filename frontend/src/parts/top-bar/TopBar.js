@@ -8,6 +8,10 @@ import FontAwesome from "@fortawesome/react-fontawesome";
 import "./TopBar.css";
 
 const TopBar = ({ sId }) => {
+  const onPrintClick = () => {
+    window.print();
+  };
+
   return (
     <div className="topbar">
       <Link className="topbar__back" to="/dashboard">
@@ -23,9 +27,9 @@ const TopBar = ({ sId }) => {
           <Link className="topbar__control" to={"/songs/edit/" + sId}>
             edit
           </Link>
-          <a className="topbar__control" href="javascript:window.print()">
+          <span className="topbar__control" onClick={onPrintClick}>
             <FontAwesome icon={["fas", "print"]} /> print
-          </a>
+          </span>
         </div>
       )}
     </div>
