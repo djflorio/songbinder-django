@@ -13,7 +13,7 @@
   margin-right: 10px;
   padding: 50px;
   text-align: center;
-  color: #CDC293;
+  color: #cdc293;
   box-shadow: 0 0 5px #777;
   background-size: cover;
   background-position: center;
@@ -25,17 +25,17 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #2C414D;
+  background-color: #2c414d;
   opacity: 0.7;
   z-index: 1;
 }
 
 .home-panel__block--songs {
-  background-image: url('./img/guitarhand.jpeg');
+  background-image: url("./img/guitarhand.jpeg");
 }
 
 .home-panel__block--binders {
-  background-image: url('./img/binder.jpeg')
+  background-image: url("./img/binder.jpeg");
 }
 
 .home-panel__block-icon {
@@ -47,5 +47,13 @@
 
 .home-panel__block-text {
   position: relative;
+  z-index: 2;
+}
+
+.home-panel__block-link {
+  position: relative;
+  color: #efefef;
+  font-size: 0.8em;
+  text-decoration: none;
   z-index: 2;
 }
